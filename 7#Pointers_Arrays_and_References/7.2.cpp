@@ -4,6 +4,12 @@
 
 using namespace std;
 
+void f(int* pi)
+{
+    void* pv = pi;
+    int* pi2 = static_cast<int*>(pv);
+}
+
 int main(void)
 {
     char c = 'a';
