@@ -103,6 +103,11 @@ bool Chrono::is_leapyear(int y) {
     }
 }
 
+bool Chrono::operator==(const Date& a, const Date& b)
+{
+    return (a.year() == b.year() && a.month() == b.month() && a.day() == b.day()); 
+}
+
 const Chrono::Date& Chrono::default_date() {
     static Chrono::Date d {1, Chrono::Month::jan, 1970};
     return d;
@@ -124,6 +129,11 @@ void test(void) {
     std::cout << static_cast<int>(Month{}) << "\n";
     std::cout << static_cast<int>(is_date(29, Month::feb, 2001)) << "\n";
     std::cout << static_cast<int>(is_date(29, Month::feb, 2000)) << "\n";
+    Date d1 {12, Month(3), 1999};
+    Date d2 {d1};
+    Date d3 {14, Month(3), 1999};
+    std::cout << (d1 == d2) << "\n";
+    std::cout << (d1 == d3) << "\n";
 }
 
 int main(void) {
